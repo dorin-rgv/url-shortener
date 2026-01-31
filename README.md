@@ -4,7 +4,7 @@
 
 ### LIve Demo
 -Frontend Application: https://url-shortener-opal-nine.vercel.app/
--Backend API: https://url-shortener-production-b69f.up.railway.app/api/urls
+-Backend API: https://shortlink-drs.up.railway.app/api/urls
 -GitHub Repository: https://github.com/dorin-rgv/url-shortener
 
 A full-stack URL shortening application built with Node.js, Express, MongoDB, and React for a technical assessment.
