@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://url-shortener-production-b69f.up.railway.app/api';
 
 function App() {
   const [originalUrl, setOriginalUrl] = useState('');
