@@ -1,14 +1,12 @@
 const express = require('express');
-const {
-    createShortUrl,
-    getAllUrls,
-    deleteUrl,
-} = require('../controllers/urlController');
-
 const router = express.Router();
+// Import your controller functions
+const { shortenUrl, getUrls } = require('../controllers/urlController');
 
-router.post('/shorten', createShortUrl);
-router.get('/urls', getAllUrls);
-router.delete('/urls/:id', deleteUrl);
+// POST /api/shorten
+router.post('/shorten', shortenUrl);
+
+// GET /api/urls
+router.get('/urls', getUrls);
 
 module.exports = router;
