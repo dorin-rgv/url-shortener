@@ -9,22 +9,34 @@ const { handleRedirect } = require('./controllers/urlController');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Connect to MongoDB
 connectDB(process.env.MONGO_URI);
 
+// ==========================================
+// 1. CORS CONFIGURATION (MUST BE FIRST)
+// ==========================================
 app.use(cors({
   origin: 'https://url-shortener-opal-nine.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true
 }));
+// REMOVED: app.options('*', cors()); <-- This was causing the crash!
 
+// ==========================================
+// 2. OTHER MIDDLEWARE
+// ==========================================
 app.use(express.json());
 app.use(morgan('dev'));
 
-// THIS IS THE MAGIC LINE
-app.use('/api', urlRoutes); 
-
+// ==========================================
+// 3. ROUTES
+// ==========================================
+app.use('/api', urlRoutes);
 app.get('/:shortCode', handleRedirect);
 
-app.listen(PORT, () => {
+// ==========================================
+// 4. START SERVER (Bind to 0.0.0.0 for Render)
+// ==========================================
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
 });
